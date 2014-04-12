@@ -1,0 +1,41 @@
+{
+  "name": "blob-stream",
+  "version": "0.1.0",
+  "description": "A Node-style writable stream for HTML5 Blobs",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "browserify test/index.js | testling"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/devongovett/blob-stream"
+  },
+  "author": "Devon Govett <devongovett@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devongovett/blob-stream/issues"
+  },
+  "homepage": "https://github.com/devongovett/blob-stream",
+  "dependencies": {
+    "blob": "0.0.2"
+  },
+  "devDependencies": {
+    "tape": "^2.12.3"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/10..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/5.1..latest",
+      "opera/11.0..latest",
+      "iphone/6..latest",
+      "ipad/6..latest",
+      "android-browser/latest"
+    ]
+  }
+}
