@@ -23,7 +23,6 @@ BlobStream.prototype._write = function(chunk, encoding, callback) {
     || chunk.byteLength !== chunk.buffer.byteLength)
     chunk = new Uint8Array(chunk);
     
-  var buffer = chunk.buffer;
   this.length += chunk.length;
   this._chunks.push(chunk.buffer);
   callback();
