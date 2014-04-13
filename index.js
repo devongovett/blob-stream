@@ -16,15 +16,11 @@ util.inherits(BlobStream, WritableStream);
 
 BlobStream.prototype._write = function(chunk, encoding, callback) {
   // convert chunks to Uint8Arrays (e.g. Buffer when array fallback is being used)
-  // also make a copy if this is a slice of the ArrayBuffer
-  // since BlobBuilder requires an ArrayBuffer not a typed array
-  if (!(chunk instanceof Uint8Array) 
-    || chunk.byteOffset > 0 
-    || chunk.byteLength !== chunk.buffer.byteLength)
+  if (!(chunk instanceof Uint8Array))
     chunk = new Uint8Array(chunk);
     
   this.length += chunk.length;
-  this._chunks.push(chunk.buffer);
+  this._chunks.push(chunk);
   callback();
 };
 
