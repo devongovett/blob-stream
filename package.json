@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/devongovett/blob-stream",
   "dependencies": {
-    "blob": "0.0.2"
+    "blob": "0.0.3"
   },
   "devDependencies": {
     "tape": "^2.12.3"
