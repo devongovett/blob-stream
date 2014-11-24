@@ -9,6 +9,7 @@ function BlobStream() {
     
   WritableStream.call(this);
   this._chunks = [];
+  this._blob = null;
   this.length = 0;
 }
 
@@ -25,9 +26,22 @@ BlobStream.prototype._write = function(chunk, encoding, callback) {
 };
 
 BlobStream.prototype.toBlob = function(type) {
-  return new Blob(this._chunks, {
-    type: type || 'application/octet-stream'
-  });
+  type = type || 'application/octet-stream';
+  
+  // cache the blob if needed
+  if (!this._blob) {
+    this._blob = new Blob(this._chunks, {
+      type: type
+    });
+    
+    this._chunks = []; // free memory
+  }
+  
+  // if the cached blob's type doesn't match the requested type, make a new blob
+  if (this._blob.type !== type)
+    this._blob = new Blob([this._blob], { type: type });
+  
+  return this._blob;
 };
 
 BlobStream.prototype.toBlobURL = function(type) {
