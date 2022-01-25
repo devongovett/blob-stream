@@ -3,6 +3,7 @@
   "version": "0.1.3",
   "description": "A Node-style writable stream for HTML5 Blobs",
   "main": "index.js",
+  "browser": "browser.js",
   "directories": {
     "test": "test"
   },
@@ -21,7 +22,9 @@
   },
   "homepage": "https://github.com/devongovett/blob-stream",
   "dependencies": {
-    "blob": "0.0.4"
+    "blob": "0.0.4",
+    "inherits": "^2.0.4",
+    "stream-browserify": "^3.0.0"
   },
   "devDependencies": {
     "tape": "^2.12.3"
